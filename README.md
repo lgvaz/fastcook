@@ -1,4 +1,5 @@
-# nbdev template
+# Fastcook - Bon appetit!
+> Fastcook provides useful recipes for your [fastai](https://github.com/fastai/fastai2) driven workflow..
 
-Use this template to more easily create your nbdev project.
 
+You can explore recipes directly from the `nbs` folder or via the documentation.

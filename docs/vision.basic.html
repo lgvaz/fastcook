@@ -19,11 +19,16 @@ description: "How to open images, apply transforms."
 -->
 
 <div class="container" id="notebook-container">
-    {% raw %}
         
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -37,6 +42,8 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Open">Open<a class="anchor-link" href="#Open"> </a></h3>
@@ -50,6 +57,8 @@ description: "How to open images, apply transforms."
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -82,6 +91,8 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Open as black and white:</p>
@@ -89,6 +100,8 @@ description: "How to open images, apply transforms."
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -120,6 +133,8 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From tensor/numpy-array:</p>
@@ -127,6 +142,8 @@ description: "How to open images, apply transforms."
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -141,12 +158,16 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Resize">Resize<a class="anchor-link" href="#Resize"> </a></h3>
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -178,12 +199,16 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Save">Save<a class="anchor-link" href="#Save"> </a></h3>
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -197,12 +222,16 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Convert-to-Tensor">Convert to Tensor<a class="anchor-link" href="#Convert-to-Tensor"> </a></h3>
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -232,6 +261,8 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Pipeline">Pipeline<a class="anchor-link" href="#Pipeline"> </a></h2>
@@ -245,6 +276,8 @@ description: "How to open images, apply transforms."
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -258,6 +291,10 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -288,6 +325,8 @@ description: "How to open images, apply transforms."
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>IMPORTANT:</strong> The expected output of the cell above would be <code>(128,128)</code> since we are calling <code>Resize(128)</code>, but we are instead getting <code>(256,144)</code>.<br>
@@ -296,6 +335,8 @@ This happens because <code>Pipeline</code> reorders our functions based on an at
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -325,6 +366,8 @@ This happens because <code>Pipeline</code> reorders our functions based on an at
 </div>
 
 </div>
+    {% endraw %}
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For our function to execute after <code>Resize</code>, it's <code>order</code> has to be greater than 1 (the execution order is ascedent).</p>
@@ -332,6 +375,8 @@ This happens because <code>Pipeline</code> reorders our functions based on an at
 </div>
 </div>
 </div>
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -346,6 +391,10 @@ This happens because <code>Pipeline</code> reorders our functions based on an at
 </div>
 
 </div>
+    {% endraw %}
+
+    {% raw %}
+    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -377,6 +426,7 @@ This happens because <code>Pipeline</code> reorders our functions based on an at
 
 </div>
     {% endraw %}
+
 </div>
  
 

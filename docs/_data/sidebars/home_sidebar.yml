@@ -5,32 +5,35 @@
 # Instead edit ../../sidebar.json
 entries:
 - folders:
+  - output: web,pdf
+    title: Overview
+    url: /
   - folderitems:
     - output: web,pdf
-      title: Overview
-      url: /
-    - output: web,pdf
-      title: Utils
-      url: /utils
-    - output: web,pdf
-      title: Jupyter notebook
+      title: Jupyter
       url: /notebook
     - output: web,pdf
       title: Colab
       url: /plataforms.colab
+    output: web
+    title: Plataforms
+  - folderitems:
     - output: web,pdf
       title: Datablock
       url: /common.datablock
     - output: web,pdf
-      title: Callbacks
+      title: 'Callbacks:'
       url: /common.callbacks
     - output: web,pdf
-      title: Cleaning data
+      title: Clean data
       url: /common.clean_data
+    output: web
+    title: Common
+  - folderitems:
     - output: web,pdf
-      title: Basic data handling
+      title: Basic
       url: /vision.basic
     output: web
-    title: fastcook
+    title: Vision
   output: web
   title: Sidebar

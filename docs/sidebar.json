@@ -1,11 +1,16 @@
 {
-  "fastcook": {
-    "Overview": "/",
-    "Utils": "/utils",
-    "Colab": "/plataforms.colab",
+  "Overview": "/",
+  "Plataforms": {
+    "Jupyter": "/notebook",
+    "Colab": "/plataforms.colab"
+  },
+  "Common": {
     "Datablock": "/common.datablock",
-    "Callbacks": "/common.callbacks",
-    "Cleaning data": "/common.clean_data",
-    "Basic data handling": "/vision.basic"
+    "Callbacks:": "/common.callbacks",
+    "Clean data": "/common.clean_data"
+  },
+  "Vision": {
+    "Basic": "/vision.basic"
   }
+
 }

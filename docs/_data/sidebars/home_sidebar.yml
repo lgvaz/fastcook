@@ -13,6 +13,9 @@ entries:
       title: Utils
       url: /utils
     - output: web,pdf
+      title: Jupyter notebook
+      url: /notebook
+    - output: web,pdf
       title: Colab
       url: /plataforms.colab
     - output: web,pdf

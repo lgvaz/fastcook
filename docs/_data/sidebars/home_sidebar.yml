@@ -22,7 +22,7 @@ entries:
       title: Datablock
       url: /common.datablock
     - output: web,pdf
-      title: 'Callbacks:'
+      title: Callbacks
       url: /common.callbacks
     - output: web,pdf
       title: Clean data

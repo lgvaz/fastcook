@@ -6,7 +6,7 @@
   },
   "Common": {
     "Datablock": "/common.datablock",
-    "Callbacks:": "/common.callbacks",
+    "Callbacks": "/common.callbacks",
     "Clean data": "/common.clean_data"
   },
   "Vision": {

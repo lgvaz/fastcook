@@ -206,14 +206,14 @@ Check all the available callbacks <a href="http://dev.fast.ai/callback.core#Call
   <tbody>
     <tr>
       <td>0</td>
-      <td>10.417525</td>
-      <td>9.759871</td>
+      <td>34.447205</td>
+      <td>35.487442</td>
       <td>00:00</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>10.357862</td>
-      <td>9.689531</td>
+      <td>34.537712</td>
+      <td>35.324310</td>
       <td>00:00</td>
     </tr>
   </tbody>
@@ -246,7 +246,33 @@ After epoch
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's define a custom loss function that receives the standard combination of predictions and targets <em>plus</em> some additional stuff.</p>
+<p>Let's define a custom loss function that receives the standard combination of predictions and targets <em>plus</em> some additional stuff:</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">explosive_loss</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">targ</span><span class="p">,</span> <span class="n">stuff</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">loss</span> <span class="o">=</span> <span class="n">MSELossFlat</span><span class="p">()(</span><span class="n">pred</span><span class="p">,</span><span class="n">targ</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">loss</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1000</span> <span class="k">if</span> <span class="n">stuff</span><span class="o">==</span><span class="s1">&#39;explode&#39;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And now we create a corresponding callback to inject this additional stuff:</p>
 
 </div>
 </div>
@@ -260,9 +286,9 @@ After epoch
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">ExplodingCallback</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
   <span class="k">def</span> <span class="nf">after_pred</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;stable&#39;</span>
-    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span> <span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;explode&#39;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">learn</span><span class="o">.</span><span class="n">yb</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">yb</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+    <span class="n">stuff</span> <span class="o">=</span> <span class="s1">&#39;stable&#39;</span>
+    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span> <span class="n">stuff</span> <span class="o">=</span> <span class="s1">&#39;explode&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">learn</span><span class="o">.</span><span class="n">yb</span> <span class="o">=</span> <span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">yb</span><span class="p">,</span> <span class="n">stuff</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -279,25 +305,6 @@ After epoch
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">explosive_loss</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">targ</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-  <span class="n">loss</span> <span class="o">=</span> <span class="n">MSELossFlat</span><span class="p">()(</span><span class="n">pred</span><span class="p">,</span><span class="n">targ</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">loss</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1000</span> <span class="k">if</span> <span class="n">state</span><span class="o">==</span><span class="s1">&#39;explode&#39;</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -332,8 +339,8 @@ After epoch
   <tbody>
     <tr>
       <td>0</td>
-      <td>303.497498</td>
-      <td>503.368195</td>
+      <td>822.614441</td>
+      <td>506.296997</td>
       <td>00:00</td>
     </tr>
   </tbody>
@@ -350,7 +357,7 @@ After epoch
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's also create a callback that stops training if explosions happen.</p>
+<p>Let's also create a callback that stops training if explosions happen:</p>
 
 </div>
 </div>
@@ -411,7 +418,7 @@ After epoch
   <tbody>
     <tr>
       <td>0</td>
-      <td>156.906784</td>
+      <td>520.410156</td>
       <td>00:00</td>
     </tr>
   </tbody>

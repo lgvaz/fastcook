@@ -25,6 +25,9 @@ entries:
       title: Callbacks
       url: /common.callbacks
     - output: web,pdf
+      title: Type dispatch
+      url: /common.typedispatch
+    - output: web,pdf
       title: Clean data
       url: /common.clean_data
     output: web

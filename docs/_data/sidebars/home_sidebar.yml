@@ -14,9 +14,9 @@ entries:
       url: /notebook
     - output: web,pdf
       title: Colab
-      url: /plataforms.colab
+      url: /platforms.colab
     output: web
-    title: Plataforms
+    title: Platforms
   - folderitems:
     - output: web,pdf
       title: Datablock

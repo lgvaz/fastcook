@@ -1,8 +1,8 @@
 {
   "Overview": "/",
-  "Plataforms": {
+  "Platforms": {
     "Jupyter": "/notebook",
-    "Colab": "/plataforms.colab"
+    "Colab": "/platforms.colab"
   },
   "Common": {
     "Datablock": "/common.datablock",

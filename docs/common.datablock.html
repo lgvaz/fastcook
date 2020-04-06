@@ -19,14 +19,11 @@ description: "Recipes for handling data not in a standard format."
 -->
 
 <div class="container" id="notebook-container">
-        
     {% raw %}
-    
+        
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The fastai documentation already has excellent examples of the Datablock API, you can find it <a href="https://github.com/fastai/fastai2/blob/master/nbs/50_tutorial.datablock.ipynb">here</a>. Because of that I'll focus on more peculiar use cases here.<br>
@@ -41,8 +38,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -56,10 +51,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -75,8 +66,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Custom-types">Custom types<a class="anchor-link" href="#Custom-types"> </a></h2>
@@ -96,8 +85,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -129,8 +116,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As we can see, this color maps inverts black and white, a more natural way of displaying this image would be with the <code>gray</code> colormap:</p>
@@ -138,8 +123,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -171,8 +154,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So we can create a class that uses this colormap instead:</p>
@@ -180,8 +161,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -195,10 +174,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -231,8 +206,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If we want the changes to also be applied to <code>show_batch</code> we need to make an additional modification, we have to make sure that when our image gets converted to a tensor it maintains the new <code>_show_args</code> we just defined (else it goes back to the <code>_show_args</code> from <code>PILImageBW</code>).<br>
@@ -241,8 +214,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -257,10 +228,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -295,8 +262,6 @@ If you want a more detailed view take a look at <a href="https://muellerzr.githu
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Custom-TransformBlock-and-show-method">Custom <code>TransformBlock</code> and <code>show</code> method<a class="anchor-link" href="#Custom-TransformBlock-and-show-method"> </a></h3><blockquote><p>How to create a new block for the mid-level API.</p>
@@ -313,8 +278,6 @@ How do we handle that?</p>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -332,10 +295,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -367,10 +326,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -385,10 +340,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -402,10 +353,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -421,10 +368,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -440,10 +383,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -457,10 +396,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -476,10 +411,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -511,8 +442,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Further reading:</strong> Check <a href="http://dev.fast.ai/tutorial.siamese#Writing-your-custom-data-block">this</a> for a siamese datablock tutorial.</p>
@@ -533,8 +462,6 @@ How do we handle that?</p>
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -550,10 +477,6 @@ How do we handle that?</p>
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -587,7 +510,6 @@ How do we handle that?</p>
 
 </div>
     {% endraw %}
-
 </div>
  
 

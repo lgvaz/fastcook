@@ -19,16 +19,11 @@ description: "What is it, how to use it, how to use it to extend fastai."
 -->
 
 <div class="container" id="notebook-container">
-        
     {% raw %}
-    
+        
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -42,8 +37,6 @@ description: "What is it, how to use it, how to use it to extend fastai."
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="A-very-simple-introduction">A very simple introduction<a class="anchor-link" href="#A-very-simple-introduction"> </a></h2>
@@ -58,8 +51,6 @@ One way of doing that is a function that checks (with <code>if</code>s condition
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -75,10 +66,6 @@ One way of doing that is a function that checks (with <code>if</code>s condition
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -108,8 +95,6 @@ One way of doing that is a function that checks (with <code>if</code>s condition
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Alright, works well enough.<br>
@@ -118,8 +103,6 @@ Let's say after some time we want to include complex numbers, let's say we want 
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -136,10 +119,6 @@ Let's say after some time we want to include complex numbers, let's say we want 
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -169,8 +148,6 @@ Let's say after some time we want to include complex numbers, let's say we want 
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Simple enough right? But what happens when <strong>you can't modify</strong> the source code? (I mean, if the package is open source, you can always go to your local installation and modify the lines that you want, but good luck maintaining that updated. We should be able to modify the function behaviour <strong>without</strong> having to change the source code directly).</p>
@@ -185,8 +162,6 @@ Let's say after some time we want to include complex numbers, let's say we want 
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -201,10 +176,6 @@ Let's say after some time we want to include complex numbers, let's say we want 
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -219,8 +190,6 @@ Let's say after some time we want to include complex numbers, let's say we want 
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If you're used with standard Python you may be a bit confused with what just happened in the two cells above, we declared the same function twice! Your intuition must be saying "the latter is going to overwrite the former!".<br>
@@ -229,8 +198,6 @@ Well, <code>typedispatch</code> will keep both versions for us, and when we call
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -260,8 +227,6 @@ Well, <code>typedispatch</code> will keep both versions for us, and when we call
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, adding your custom implementation for complex numbers is simple as:</p>
@@ -269,8 +234,6 @@ Well, <code>typedispatch</code> will keep both versions for us, and when we call
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -285,10 +248,6 @@ Well, <code>typedispatch</code> will keep both versions for us, and when we call
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -318,8 +277,6 @@ Well, <code>typedispatch</code> will keep both versions for us, and when we call
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>By using <code>typedispatch</code> we don't need to touch the source code!<br>
@@ -329,8 +286,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -345,10 +300,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -378,8 +329,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And there is more, it also works with subclasses:</p>
@@ -387,8 +336,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -402,10 +349,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -435,8 +378,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It correctly finds the implementation for <code>int</code> and uses that. But if we define a implementation for <code>MyInt</code> directly:</p>
@@ -444,8 +385,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 </div>
 </div>
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -460,10 +399,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 
 </div>
-    {% endraw %}
-
-    {% raw %}
-    
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
@@ -493,8 +428,6 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 
 </div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It starts using that! <code>typedispatch</code> will always try to use the "closest" implementation it can find for your type.</p>
@@ -502,6 +435,7 @@ Let's create a function that return the modulus of the division if <code>a</code
 </div>
 </div>
 </div>
+    {% endraw %}
 </div>
  
 

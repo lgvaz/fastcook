@@ -206,14 +206,14 @@ Check all the available callbacks <a href="http://dev.fast.ai/callback.core#Call
   <tbody>
     <tr>
       <td>0</td>
-      <td>34.447205</td>
-      <td>35.487442</td>
+      <td>13.432809</td>
+      <td>15.951908</td>
       <td>00:00</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>34.537712</td>
-      <td>35.324310</td>
+      <td>13.398184</td>
+      <td>15.836774</td>
       <td>00:00</td>
     </tr>
   </tbody>
@@ -339,8 +339,8 @@ After epoch
   <tbody>
     <tr>
       <td>0</td>
-      <td>822.614441</td>
-      <td>506.296997</td>
+      <td>502.453827</td>
+      <td>24.532036</td>
       <td>00:00</td>
     </tr>
   </tbody>
@@ -418,7 +418,7 @@ After epoch
   <tbody>
     <tr>
       <td>0</td>
-      <td>520.410156</td>
+      <td>538.258667</td>
       <td>00:00</td>
     </tr>
   </tbody>
@@ -441,6 +441,72 @@ After epoch
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="See-it-in-action">See it in action<a class="anchor-link" href="#See-it-in-action"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's look at a perfect example that demonstrates the callback power, directly copied from <code>fastai</code> source code.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following callback works together with a model that not only returns it's output, but also two additional items: the activations of the LSTM pre-dropout and the activations of the LSTM post-dropout, you can read more about this regulization <a href="https://github.com/fastai/fastbook/blob/master/12_nlp_dive.ipynb">here</a>, at the <em>AR and TAR regularization</em> section.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At this point it's not really important that you understand <strong>what</strong> the callback is doing, but rather <strong>how</strong> it's doing.<br>
+Notice that in <code>after_pred</code> it saves the two extra outputs of the model and returns only the standard output. This makes the interaction model+callback transparent to the rest of our code, since everything else is not expecting this two additional items. In <code>after_loss</code> we use the information we just saved in <code>after_pred</code> to add regulization losses to our original loss.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">RNNRegularizer</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="s2">&quot;`Callback` that adds AR and TAR regularization in RNN training&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">alpha</span><span class="p">,</span><span class="n">beta</span>
+
+    <span class="k">def</span> <span class="nf">after_pred</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">is_listy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span>     <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">is_listy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learn</span><span class="o">.</span><span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">after_loss</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span> <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">:</span>  <span class="bp">self</span><span class="o">.</span><span class="n">learn</span><span class="o">.</span><span class="n">loss</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_out</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">learn</span><span class="o">.</span><span class="n">loss</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">*</span> <span class="p">(</span><span class="n">h</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">h</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And this is all we need for adding a completely new regulization strategy to our training loop!</p>
+
+</div>
+</div>
+</div>
 </div>
  
 

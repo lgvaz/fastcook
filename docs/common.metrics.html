@@ -348,29 +348,18 @@ You only need to define a function that receives two arguments, the prediction a
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
-</div>
-    {% endraw %}
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">accuracy_multi</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">targ</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sigmoid</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="s2">&quot;Compute accuracy when `inp` and `targ` are the same size.&quot;</span>
+    <span class="n">inp</span><span class="p">,</span><span class="n">targ</span> <span class="o">=</span> <span class="n">flatten_check</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span><span class="n">targ</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sigmoid</span><span class="p">:</span> <span class="n">inp</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">inp</span><span class="o">&gt;</span><span class="n">thresh</span><span class="p">)</span><span class="o">==</span><span class="n">targ</span><span class="o">.</span><span class="n">bool</span><span class="p">())</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="accuracy_multi" class="doc_header"><code>accuracy_multi</code><a href="https://github.com/fastai/fastai2/tree/master/fastai2/metrics.py#L166" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>accuracy_multi</code>(<strong><code>inp</code></strong>, <strong><code>targ</code></strong>, <strong><code>thresh</code></strong>=<em><code>0.5</code></em>, <strong><code>sigmoid</code></strong>=<em><code>True</code></em>)</p>
-</blockquote>
-<p>Compute accuracy when <code>inp</code> and <code>targ</code> are the same size.</p>
-
-</div>
-
-</div>
-
+    </div>
 </div>
 </div>
 

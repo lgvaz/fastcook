@@ -4,7 +4,8 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"synth_learner": "00_utils.ipynb"}
 
-modules = ["utils.py"]
+modules = ["utils.py",
+           "common/metrics.py"]
 
 doc_url = "https://lgvaz.github.io/fastcook/"
 

@@ -7,6 +7,7 @@
   "Common": {
     "Datablock": "/common.datablock",
     "Callbacks": "/common.callbacks",
+    "Metrics": "/common.metrics",
     "Type dispatch": "/common.typedispatch",
     "Clean data": "/common.clean_data"
   },
